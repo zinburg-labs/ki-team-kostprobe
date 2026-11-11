@@ -1,0 +1,93 @@
+{
+  "name": "Musterfirma GmbH - Woechentlicher Erreichbarkeits-Check",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            { "field": "cronExpression", "expression": "0 8 * * 1" }
+          ]
+        }
+      },
+      "id": "trigger-schedule",
+      "name": "Jeden Montag 08:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "url": "https://www.musterfirma-gmbh-beispiel.de",
+        "options": { "timeout": 10000 }
+      },
+      "id": "http-check",
+      "name": "Webseite abrufen",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [220, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "const statusCode = $input.first().json.statusCode ?? 0;\nconst ok = statusCode >= 200 && statusCode < 400;\nreturn [{ json: { ok, statusCode } }];"
+      },
+      "id": "code-check",
+      "name": "Status pruefen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [440, 0]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            { "value1": "={{$json.ok}}", "value2": false }
+          ]
+        }
+      },
+      "id": "if-auffaellig",
+      "name": "Auffaellig?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [660, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.PAPERCLIP_API_URL}}/api/companies/{{$env.PAPERCLIP_COMPANY_ID}}/issues",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "jsonParameters": true,
+        "bodyParametersJson": "={{ { \"title\": \"Webseite nicht erreichbar (Statuscode \" + $json.statusCode + \")\", \"priority\": \"high\", \"description\": \"Woechentlicher Check am \" + $now.toISO() + \" fand Statuscode \" + $json.statusCode + \".\" } }}"
+      },
+      "id": "create-ticket",
+      "name": "Paperclip-Ticket anlegen",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [880, -80],
+      "credentials": {
+        "httpHeaderAuth": {
+          "name": "Paperclip Agent Key (Platzhalter, eigene Credential anlegen)"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Jeden Montag 08:00": {
+      "main": [[{ "node": "Webseite abrufen", "type": "main", "index": 0 }]]
+    },
+    "Webseite abrufen": {
+      "main": [[{ "node": "Status pruefen", "type": "main", "index": 0 }]]
+    },
+    "Status pruefen": {
+      "main": [[{ "node": "Auffaellig?", "type": "main", "index": 0 }]]
+    },
+    "Auffaellig?": {
+      "main": [
+        [{ "node": "Paperclip-Ticket anlegen", "type": "main", "index": 0 }],
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" }
+}

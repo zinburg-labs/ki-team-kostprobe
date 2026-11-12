@@ -1,8 +1,8 @@
 # KI-Team-Kostprobe
 
 Kostenlose, öffentliche Kostprobe aus dem späteren Bauplan-Produkt „Agentisches Büro mit Paperclip, Hermes und
-n8n". Sie zeigt das Muster an einer **frei erfundenen** Musterfirma GmbH: eine Mini-Firmenvorlage für Paperclip
-und zwei Beispiel-Routinen nach dem Entscheidungsmodell „Paperclip zuerst, n8n nur wenn nötig".
+n8n“. Sie zeigt das Muster an einer **frei erfundenen** Musterfirma GmbH: eine Mini-Firmenvorlage für Paperclip
+und zwei Beispiel-Routinen nach dem Entscheidungsmodell „Paperclip zuerst, n8n nur wenn nötig“.
 
 ## Wie das Muster funktioniert
 
@@ -43,8 +43,8 @@ mitgeliefert, siehe `LIZENZHINWEISE.md`.
 
 Diese Kostprobe zeigt nur einen Ausschnitt. Das vollständige, bereinigte Grundgerüst (komplette Firmenvorlage,
 Ticket-Skripte für Karten und Übergaben, das ganze Entscheidungsmodell, mehr Routinen-Beispiele, Hermes-Vorlagen
-und eine Installationsanleitung) gibt es als einmalig kostenpflichtigen „Bauplan". Link folgt hier, sobald die
-Seite online ist.
+und eine Installationsanleitung) gibt es als einmalig kostenpflichtigen „Bauplan“. Mehr dazu:
+[consulting.zinburg.dev/bauplan](https://consulting.zinburg.dev/bauplan).
 
 ## Lizenz
 

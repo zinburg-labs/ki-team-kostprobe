@@ -12,6 +12,17 @@ Paperclip bekommt nur das Ergebnis als Ticket.
 4. **Bei Auffälligkeit:** HTTP-Request-Node gegen die Paperclip-API, legt ein Ticket mit Befund an.
 5. **Sonst:** Lauf endet ohne Ticket (kein Rauschen bei grünem Zustand).
 
+## Ablauf als Diagramm
+
+```mermaid
+flowchart LR
+    A[Schedule-Trigger: Montag 08:00 Uhr] --> B[HTTP-Request: Webseite abrufen]
+    B --> C[Code-Node: Statuscode pruefen]
+    C --> D{Auffaellig?}
+    D -- Ja --> E[Paperclip-Ticket anlegen]
+    D -- Nein --> F[Lauf endet ohne Ticket]
+```
+
 ## Zum Importieren
 
 `workflow-demo.json` in eine eigene n8n-Installation importieren. Platzhalter ersetzen:

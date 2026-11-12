@@ -4,6 +4,21 @@ Kostenlose, öffentliche Kostprobe aus dem späteren Bauplan-Produkt „Agentisc
 n8n". Sie zeigt das Muster an einer **frei erfundenen** Musterfirma GmbH: eine Mini-Firmenvorlage für Paperclip
 und zwei Beispiel-Routinen nach dem Entscheidungsmodell „Paperclip zuerst, n8n nur wenn nötig".
 
+## Wie das Muster funktioniert
+
+```mermaid
+flowchart LR
+    A[Neues Ticket oder Auslöser] --> B{Reicht Paperclip allein?}
+    B -- Ja --> C[Stufe 1: reine Paperclip-Routine]
+    B -- Nein, externer Auslöser nötig --> D[Stufe 3: n8n plus Paperclip]
+    C --> E[Ticket pruefen, schliessen oder Karte an die Geschaeftsfuehrung]
+    D --> F[n8n: Zeitsteuerung und HTTP-Abruf]
+    F --> G[Bei einem Befund: Paperclip-Ticket anlegen]
+```
+
+Die beiden Beispiele in `routinen-beispiele/` zeigen je eine Stufe davon. Mehr Stufen und das volle
+Entscheidungsmodell stehen im kostenpflichtigen Bauplan.
+
 ## Was hier drin ist
 
 - `firmenvorlage/` – Minimal-Vorlage für eine Paperclip-Firma: Hausregeln, Ablaufschema, ein Beispiel-Agentenprofil.

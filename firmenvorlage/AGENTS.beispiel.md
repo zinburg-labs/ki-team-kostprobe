@@ -16,3 +16,7 @@ KI-Team abgibt. Diese Agentenrolle übernimmt die Rechnungsprüfung (siehe
 ## Gilt zusätzlich
 
 Hausregeln (`firmenvorlage/HAUSREGELN.md`) und Laufschema (`firmenvorlage/LAUF.md`).
+
+---
+
+<sub>[← Zur Übersicht](../README.md) · [Der volle Bauplan](https://consulting.zinburg.dev/bauplan) · Musterfirma GmbH ist frei erfunden.</sub>

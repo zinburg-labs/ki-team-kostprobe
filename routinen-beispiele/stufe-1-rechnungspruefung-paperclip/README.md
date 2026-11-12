@@ -15,10 +15,11 @@ reicht, weil die Prüfung selbst nur Paperclip-Daten braucht (Ticket-Felder, Anh
 ## Ablauf als Diagramm
 
 ```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#141A52','primaryTextColor':'#ECEFF7','primaryBorderColor':'#00E5C7','lineColor':'#00E5C7','secondaryColor':'#1C1450','tertiaryColor':'#0A0D2B'}}}%%
 flowchart TD
-    A[Neues Ticket, Label Rechnung] --> B[Buero-Assistenz prueft Beleg, Betrag, Faelligkeitsdatum, Zahlungsempfaenger]
-    B -->|Unauffaellig| C[Ticket schliessen, Beleg bleibt am Ticket]
-    B -->|Auffaellig| D[Karte an die Geschaeftsfuehrung, Ticket wartet]
+    A[Neues Ticket, Label Rechnung] --> B[Büro-Assistenz prüft Beleg, Betrag, Fälligkeitsdatum, Zahlungsempfänger]
+    B -->|Unauffällig| C[Ticket schließen, Beleg bleibt am Ticket]
+    B -->|Auffällig| D[Karte an die Geschäftsführung, Ticket wartet]
 ```
 
 ## Beispiel-Ticket (fiktiv)
@@ -31,3 +32,7 @@ flowchart TD
 
 Die Prüfung braucht nichts außerhalb von Paperclip (keinen externen Trigger, keine andere API) – genau das
 unterscheidet Stufe 1 von Stufe 3 im zweiten Beispiel.
+
+---
+
+<sub>[← Zur Übersicht](../../README.md) · [Der volle Bauplan](https://consulting.zinburg.dev/bauplan) · Musterfirma GmbH ist frei erfunden.</sub>

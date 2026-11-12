@@ -15,10 +15,11 @@ Paperclip bekommt nur das Ergebnis als Ticket.
 ## Ablauf als Diagramm
 
 ```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#141A52','primaryTextColor':'#ECEFF7','primaryBorderColor':'#00E5C7','lineColor':'#00E5C7','secondaryColor':'#1C1450','tertiaryColor':'#0A0D2B'}}}%%
 flowchart LR
     A[Schedule-Trigger: Montag 08:00 Uhr] --> B[HTTP-Request: Webseite abrufen]
-    B --> C[Code-Node: Statuscode pruefen]
-    C --> D{Auffaellig?}
+    B --> C[Code-Node: Statuscode prüfen]
+    C --> D{Auffällig?}
     D -- Ja --> E[Paperclip-Ticket anlegen]
     D -- Nein --> F[Lauf endet ohne Ticket]
 ```
@@ -36,3 +37,7 @@ flowchart LR
 Der Auslöser (Zeitsteuerung + externer HTTP-Abruf) liegt außerhalb von Paperclip. Das Entscheidungsmodell im
 vollen Bauplan erklärt, wann Stufe 1 (nur Paperclip), Stufe 2 (Paperclip-Routine mit externem Lesezugriff) oder
 Stufe 3 (n8n als Auslöser) die richtige Wahl ist.
+
+---
+
+<sub>[← Zur Übersicht](../../README.md) · [Der volle Bauplan](https://consulting.zinburg.dev/bauplan) · Musterfirma GmbH ist frei erfunden.</sub>
